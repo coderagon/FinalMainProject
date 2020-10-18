@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    <script>
+       i=0;
+    var arr = ["https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2015%2F01%2FColorful-city-drawing-HD-wallpaper.jpg&f=1&nofb=1",
+    			"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.informationsecuritybuzz.com%2Fwp-content%2Fuploads%2Fbank-and-security.jpg&f=1&nofb=1",
+    					"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.maxipik.com%2Fassets%2Fimg%2Fitems%2F404%2Fori%2FBank-Vectors.jpeg&f=1&nofb=1"] 
+    	 	function fun()
+    	 	{
+    	       i%=3;
+    	      
+    	 		$("#bdy").css("background-image","url("+arr[i]+")");
+    	 		i++;
+    			setTimeout(fun,3000);
+    		}
+    
+    fun()
+    </script>
+
+    <style>
+
+        #bdy{
+            background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2015%2F01%2FColorful-city-drawing-HD-wallpaper.jpg&f=1&nofb=1);
+        }
+        .container{
+                padding-top: 10%;
+        }
+    </style>
+
+    <title>Please sign in</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+  </head>
+  <body id="bdy">
+     <div class="container">
+      <form class="form-signin" method="post" action="/login">
+        <h2 class="form-signin-heading w3-text-white">Admin Login</h2>
+        <p>
+          <label for="username" class="sr-only">Username</label>
+          <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="">
+        </p>
+        <p>
+          <label for="password" class="sr-only">Password</label>
+          <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+        </p>
+<input name="_csrf" type="hidden" value="b8f97352-ee83-4d4e-a8a5-d7745a84e640">
+        <button class="btn btn-lg btn-primary btn-block w3-text-white w3-black w3-hover-blue w3-hover-text-black w3-border-black" type="submit">Sign in</button>
+         <p>  
+          <label for="remember-me" class="sr-only">Remember Me</label>
+          <input type="checkbox" id="remember-me" name="remember-me" class="form-control" />
+        </p>
+    </form>
+   
+  
+</div>
+</body></html>

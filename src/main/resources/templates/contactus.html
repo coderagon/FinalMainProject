@@ -1,0 +1,29 @@
+ <!DOCTYPE html>
+    <html xmlns="https://www.thymeleaf.org">
+    <head>
+    <meta charset="ISO-8859-1">
+    <title>Contact Us</title>
+    <script type="text/javascript">
+  	
+    function request(url) {
+        req = new XMLHttpRequest();
+        req.open("GET", url, true);
+        req.onreadystatechange = function () {
+          if (req.readyState == 4) {
+            userList = JSON.parse(req.responseText);
+            alert("Found records " + userList.length);
+          }
+        };
+        req.send();
+      }
+    
+    </script>
+    </head>
+    <body>
+    <h2>Contact Information</h2>
+    <button
+      id="b1"
+      onclick="request('http://localhost:8080/admin/branches/')">Load data</button>
+      <a href="logout">Logout</a>
+    </body>
+    </html>
