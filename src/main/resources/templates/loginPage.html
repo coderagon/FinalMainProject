@@ -8,14 +8,16 @@
     
     <script>
        i=0;
-    var arr = ["https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2015%2F01%2FColorful-city-drawing-HD-wallpaper.jpg&f=1&nofb=1",
-    			"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.informationsecuritybuzz.com%2Fwp-content%2Fuploads%2Fbank-and-security.jpg&f=1&nofb=1",
-    					"https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.maxipik.com%2Fassets%2Fimg%2Fitems%2F404%2Fori%2FBank-Vectors.jpeg&f=1&nofb=1"] 
+    var arr = ["images/india1.png",
+    			"images/india2.png",
+    					"images/india3.png",
+    					"images/india4.png"] 
     	 	function fun()
     	 	{
-    	       i%=3;
+    	       i%=4;
     	      
-    	 		$("#bdy").css("background-image","url("+arr[i]+")");
+    	 		$("#bdy").css("background-image","url("+arr[i]+")").css("opacity","0.7");
+    	 		$('#bdy').css("background-size","cover");
     	 		i++;
     			setTimeout(fun,3000);
     		}
@@ -32,7 +34,7 @@
     <style>
 
         #bdy{
-            background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pixelstalk.net%2Fwp-content%2Fuploads%2F2015%2F01%2FColorful-city-drawing-HD-wallpaper.jpg&f=1&nofb=1);
+            background-image: url("images/india4.png");
         }
         .container{
                 padding-top: 10%;

@@ -3,28 +3,29 @@
     <head>
     <meta charset="ISO-8859-1">
     <title>Contact Us</title>
-    
-  <script defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy0yBhdPeRndGL1bK_rDVOT9CqsGdngfQ&callback=initMap">
-</script>
- 
-
-
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script type="text/javascript">
-    function initialize()
-	{
-		var address = "Near to Makadiya Balaji, laxmangarh"
-		var geocoder = new google.maps.Geocoder();
-		geocoder.geocode( { 'address': address}, function(results, status) {
-			if (status == google.maps.GeocoderStatus.OK) {
-				var latitude = results[0].geometry.location.lat();
-				console.log(latitude);
-				var longitude = results[0].geometry.location.lng();
-				console.log(longitude);
-			} 
-		});
-	}
-
+    
+    function geolocation(url)
+    {
+    	req = new XMLHttpRequest();
+    	req.open("GET",url,true);
+    	req.onreadystatechange = function()
+    	{
+    		if(req.readyState ==4){
+    			geoData = JSON.parse(req.responseText);
+    			
+    			console.log(geoData.features[0].geometry.coordinates);
+    			
+    			document.getElementById('maplink').href= "http://maps.google.com/maps?q=" +geoData.features[0].geometry.coordinates[1]+",+"+geoData.features[0].geometry.coordinates[0]
+    			$("#maplink").click();
+    			
+    		}
+    	};
+    	req.send();
+    }
+    
   	var userList;
   	
     function request(url) {
@@ -38,14 +39,12 @@
             
             userList.forEach((ele)=>{
             	
-            data+="<tr><td>"+ele.id+"</td><td>"+ele.name+"</td><td>"+ele.address+"</td><td>"+ele.phone_no+"</td></tr>"
+            data+="<tr><td>"+ele.id+"</td><td>"+ele.name+"</td><td>"+ele.address+"</td><td>"+ele.phone_no+"</td><td><button type=\"button\" onclick=\"geolocation(\'https://app.geocodeapi.io/api/v1/search?apikey=2c9d0760-1237-11eb-b098-d3d0a68228d6&text="+ele.address+"\')\">View On Map</button></td></tr>"
             	
             })
             
             data+="</table>"
             document.getElementById('tab').innerHTML = data;
-            
-            initialize();
       
           }
         };
@@ -65,5 +64,6 @@
     <button id="b1" onclick="request('/admin/branches/')">Load data</button>
      <a href="logout">Logout</a>
 	<div id='tab'></div>
+	<a href="" id="maplink" target="_blank">View Map</a>
     </body>
     </html>

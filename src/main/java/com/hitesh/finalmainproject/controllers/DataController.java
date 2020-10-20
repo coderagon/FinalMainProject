@@ -22,4 +22,5 @@ public class DataController {
     public List<BankDetails> getAll(){
         return service.getAll();
     }
+    
 }
