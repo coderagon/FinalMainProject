@@ -1,8 +1,16 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Create new deposit</title>
+<title>List of deposits</title>
+
+<style>
+.error{
+color:red;
+}
+</style>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script type="text/javascript">
@@ -47,39 +55,39 @@ $(document).ready(function(){
 	
 window.onload = function()
 {
-	 valid("")
+	 let str = document.getElementById("adr").val;
+	 valid(str)
 	}
 	
-	
 </script>
+
+
 </head>
 <body>
-<h1>Add a New Branch</h1>
-<div>
+<h1>Edit Page</h1>
 <h2 th:text="${msg}" id="msg"></h2>
-</div>
 
+<form action="#" th:action="@{/contactus/edit}" method="post" th:object="${branch}">
 
-<form action="#" th:action="@{/contactus/add}" method="post" th:object="${bank}">
-
-Bank Id: <input type="number" th:field="*{id}"  required />
-<span class="error" th:if="${#fields.hasErrors('id')}" th:errors="*{accNo}" ></span>
-	<br/>
-	
-Bank Name: <input type="text" th:field="*{name}" required />
+Bank Id: <span th:text="*{id}"></span> <br/>
+<input type="hidden" th:field="*{id}" />
+Branch Name: <input type="text" th:field="*{name}" required />
 <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></span>
-	<br/>
-	
-Bank Address: <input type="text" id="adr" th:field="*{address}" onfocusout=valid(this.value) required />
+<br/>
+
+Branch Address: <input type="text" id="adr" th:field="*{address}" onfocusout=valid(this.value) required />
 <span class="error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}" ></span>
 <span id="validate"></span>
-	<br/>
-	
-Bank contact: <input type="text" th:field="*{phone_no}" required />
+<br/>
+
+Branch Contact: <input type="text" th:field="*{phone_no}" required />
 <span class="error" th:if="${#fields.hasErrors('phone_no')}" th:errors="*{phone_no}" ></span>
-	<br/>
-	
+<br/>
+
+
 <input type="submit" id="mj" value="Submit" disabled/>
+
 </form>
+
 </body>
 </html>

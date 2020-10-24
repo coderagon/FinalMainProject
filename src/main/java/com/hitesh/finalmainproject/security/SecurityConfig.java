@@ -47,6 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         .loginPage("/login")
     	.permitAll()
     	.defaultSuccessUrl("/contactus",true)
+    	.failureUrl("/loginerror")
 		.and()
 		.rememberMe()
 		.and()
@@ -84,7 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
     	
-    	web.ignoring().antMatchers("/resources/**","/static/**","/css/**","/images/**");
+    	web.ignoring().antMatchers("/resources/**","/static/**","/css/**","/images/**","/static/*");
     }
     
 }
