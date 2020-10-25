@@ -35,11 +35,14 @@ $(document).ready(function(){
 	            	{
 	            		document.getElementById("validate").innerHTML="*Not Valid Location" 
 	            			document.getElementById("mj").disabled=true
+	            			return false
 	            	}
 	            else
 	            	{
 	            	document.getElementById("validate").innerHTML="*Valid Location" 
 	            	document.getElementById("mj").disabled=false
+	            	return true
+	            	
 	            	}
 	            }
 	          
@@ -49,6 +52,7 @@ $(document).ready(function(){
      	{
      	document.getElementById("validate").innerHTML="" 
      		document.getElementById("mj").disabled=true
+     		return false
      	}
 	        req.send();
 	}
@@ -75,7 +79,7 @@ Branch Name: <input type="text" th:field="*{name}" required />
 <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></span>
 <br/>
 
-Branch Address: <input type="text" id="adr" th:field="*{address}" onfocusout=valid(this.value) required />
+Branch Address: <input type="text" id="adr" th:field="*{address}" oninput=valid(this.value) required />
 <span class="error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}" ></span>
 <span id="validate"></span>
 <br/>

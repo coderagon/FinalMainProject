@@ -37,22 +37,26 @@
             
             var data="<table><tr><th>Bank Id</th><th>Bank Name</th><th>Bank Address</th><th>Bank Contact</th><th>Edit Branch Details</th><th>Delete Branch</th><th>View On Map</th></tr>"
             
+            if(userList.length!=0)
+            	{
             userList.forEach((ele)=>{
             	
             data+="<tr><td>"+ele.id+"</td><td>"+ele.name+"</td><td>"+ele.address+
             "</td><td>"+ele.phone_no+"</td><td><button onclick=\"window.location.href=\'/contactus/edit?branch_id="+ele.id+"\';\">Edit Details</button></td><td><button onclick=\"window.location.href=\'/contactus/delete/"+ele.id+"\';\">Delete</button></td><td><button type=\"button\" onclick=\"geolocation(\'https://app.geocodeapi.io/api/v1/search?apikey=2c9d0760-1237-11eb-b098-d3d0a68228d6&text="+ele.address+"\')\">View On Map</button></td></tr>"
             	
             })
-            
+            	}
             data+="</table>"
+            if(userList.length==0)
+            	{
+            	data+="<h1>No Data Available</h1>"
+            	}
             document.getElementById('tab').innerHTML = data;
       
           }
         };
         req.send();
       }
-    
-    
     
     </script>
     </head>
@@ -63,9 +67,18 @@
     document.getElementById('name').innerHTML= "Welcome "+localStorage.getItem("username").toUpperCase();
     </script>
  
-    <button id="b1" onclick="request('/admin/branches/')">Load data</button>
+    <button id="b1" onclick="request('/admin/branches/')" hidden>Load data</button>
+    <button id="b2" onclick="window.location.href='/contactus/add'" >add new Branch</button>
      <a href="logout">Logout</a>
 	<div id='tab'></div>
 	<a href="" id="maplink" target="_blank" hidden>View Map</a>
+	
+	
+	<script>
+	window.onload = function()
+	{
+		document.getElementById("b1").click()
+	}
+	</script>
     </body>
     </html>
