@@ -16,16 +16,16 @@ import com.hitesh.finalmainproject.customvalidator.ContactNumberConstraint;
 public class BankDetails {
 	
 	@Id @Column(name="bank_id")
-	@Min(value = 101,message ="Minimum value should be 101")
-	@Max(value = 999,message ="Mavimum value should be 999")
+	@Min(value = 101,message ="*Minimum value should be 101")
+	@Max(value = 999,message ="*Mavimum value should be 999")
 	private int id;
 	
 	@Column(name="bank_name")
-	@NotBlank(message = "Bank Name Can't be Blank")
+	@NotBlank(message = "*Bank Name Can't be Blank")
 	private String name;
 	
 	@Column(name="bank_address")
-	@NotBlank(message = "Bank Address can't be Blank")
+	@NotBlank(message = "*Bank Address can't be Blank")
 	private String address;
 	
 	@Column(name="bank_phone")

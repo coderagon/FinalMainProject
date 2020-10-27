@@ -2,7 +2,14 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>Create new deposit</title>
+<title>Branch add Page</title>
+
+<style>
+.error{
+color:blue;
+}
+</style>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <script type="text/javascript">
@@ -55,12 +62,16 @@ window.onload = function()
 	
 </script>
 </head>
-<body>
-<h1>Add a New Branch</h1>
-<div>
-<h2 th:text="${msg}" id="msg"></h2>
-</div>
+<body class="w3-animate-top w3-black">
+<div class="w3-panel w3-red w3-mobile w3-right-align w3-text-black w3-red">
+    <h1 id ="name"></h1>
+    <h3 id ="name">Add New Branch</h3>
+    </div>
+    <script>
+    document.getElementById('name').innerHTML= "Welcome "+localStorage.getItem("username").toUpperCase();
+    </script>
 
+<h2 th:text="${msg}" id="msg" class="w3-blue w3-text-black"></h2>
 
 <form action="#" th:action="@{/contactus/add}" method="post" th:object="${bank}">
 

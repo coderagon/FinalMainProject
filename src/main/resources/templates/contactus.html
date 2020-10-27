@@ -35,18 +35,18 @@
           if (req.readyState == 4) {
             userList = JSON.parse(req.responseText);
             
-            var data="<table><tr><th>Bank Id</th><th>Bank Name</th><th>Bank Address</th><th>Bank Contact</th><th>Edit Branch Details</th><th>Delete Branch</th><th>View On Map</th></tr>"
+            var data="<table class=\"w3-table w3-bordered w3-border w3-margin-top w3-centered\"><thead class=\" w3-text-red\"><tr><th>Bank Id</th><th>Bank Name</th><th>Bank Address</th><th>Bank Contact</th><th>Edit Branch Details</th><th>Delete Branch</th><th>View On Map</th></tr></thead>"
             
             if(userList.length!=0)
             	{
             userList.forEach((ele)=>{
             	
-            data+="<tr><td>"+ele.id+"</td><td>"+ele.name+"</td><td>"+ele.address+
-            "</td><td>"+ele.phone_no+"</td><td><button onclick=\"window.location.href=\'/contactus/edit?branch_id="+ele.id+"\';\">Edit Details</button></td><td><button onclick=\"window.location.href=\'/contactus/delete/"+ele.id+"\';\">Delete</button></td><td><button type=\"button\" onclick=\"geolocation(\'https://app.geocodeapi.io/api/v1/search?apikey=2c9d0760-1237-11eb-b098-d3d0a68228d6&text="+ele.address+"\')\">View On Map</button></td></tr>"
+            data+="<tbody class=\"w3-text-red\"><tr><td>"+ele.id+"</td><td>"+ele.name+"</td><td>"+ele.address+
+            "</td><td>"+ele.phone_no+"</td><td><button class=\" w3-button w3-red w3-hover-black w3-hover-text-red w3-text-black w3-padding-small\" onclick=\"window.location.href=\'/contactus/edit?branch_id="+ele.id+"\';\">Edit Details</button></td><td><button class=\" w3-button w3-red w3-hover-black w3-hover-text-red w3-text-black w3-padding-small\" onclick=\"window.location.href=\'/contactus/delete/"+ele.id+"\';\">Delete</button></td><td><button type=\"button\" class=\" w3-button w3-red w3-hover-black w3-hover-text-red w3-text-black w3-padding-small\" onclick=\"geolocation(\'https://app.geocodeapi.io/api/v1/search?apikey=2c9d0760-1237-11eb-b098-d3d0a68228d6&text="+ele.address+"\')\">View On Map</button></td></tr>"
             	
             })
             	}
-            data+="</table>"
+            data+="</tbody></table>"
             if(userList.length==0)
             	{
             	data+="<h1>No Data Available</h1>"
@@ -60,16 +60,21 @@
     
     </script>
     </head>
-    <body>
-    <h1 id = "name"></h1>
-    
+    <body class="w3-animate-top w3-black">
+    <div class="w3-panel w3-red w3-mobile w3-right-align">
+    <h1 id ="name" class="w3-text-black"></h1>
+    </div>
     <script>
     document.getElementById('name').innerHTML= "Welcome "+localStorage.getItem("username").toUpperCase();
     </script>
+    
+    <div class="w3-bar w3-red w3-right-align w3-mobile ">
+  <a href="/contactus/add" class="w3-bar-item w3-button w3-text-black w3-hover-black w3-hover-text-red">Add New Branch</a>
+  <a href="logout" class="w3-bar-item w3-button w3-text-black w3-right-align w3-hover-black w3-hover-text-red">Logout</a>
+</div>
  
     <button id="b1" onclick="request('/admin/branches/')" hidden>Load data</button>
-    <button id="b2" onclick="window.location.href='/contactus/add'" >add new Branch</button>
-     <a href="logout">Logout</a>
+    
 	<div id='tab'></div>
 	<a href="" id="maplink" target="_blank" hidden>View Map</a>
 	
@@ -80,5 +85,8 @@
 		document.getElementById("b1").click()
 	}
 	</script>
+	
+	<hr />
+	<footer class="w3-text-red w3-right-align">&copy; Copyright 2020 HJ</footer>
     </body>
     </html>

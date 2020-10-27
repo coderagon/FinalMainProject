@@ -2,11 +2,11 @@
 <html xmlns:th="https://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
-<title>List of deposits</title>
+<title>Branch Edit Page</title>
 
 <style>
 .error{
-color:red;
+color:blue;
 }
 </style>
 
@@ -34,12 +34,14 @@ $(document).ready(function(){
 	            if(responseData.features.length == 0)
 	            	{
 	            		document.getElementById("validate").innerHTML="*Not Valid Location" 
+	            			document.getElementById("validate").style.color="blue"
 	            			document.getElementById("mj").disabled=true
 	            			return false
 	            	}
 	            else
 	            	{
 	            	document.getElementById("validate").innerHTML="*Valid Location" 
+	            		document.getElementById("validate").style.color="green"
 	            	document.getElementById("mj").disabled=false
 	            	return true
 	            	
@@ -67,31 +69,45 @@ window.onload = function()
 
 
 </head>
-<body>
-<h1>Edit Page</h1>
-<h2 th:text="${msg}" id="msg"></h2>
+<body class="w3-animate-top w3-black">
+<div class="w3-panel w3-red w3-mobile w3-right-align w3-text-black w3-red">
+    <h1 id ="name"></h1>
+    <h3 id ="name">Branch Edit Page</h3>
+    </div>
+    <script>
+    document.getElementById('name').innerHTML= "Welcome "+localStorage.getItem("username").toUpperCase();
+    </script>
 
-<form action="#" th:action="@{/contactus/edit}" method="post" th:object="${branch}">
 
-Bank Id: <span th:text="*{id}"></span> <br/>
+<h2 th:text="${msg}" id="msg" class="w3-blue w3-text-black"></h2>
+
+<form action="#" th:action="@{/contactus/edit}" method="post" th:object="${branch}" class="w3-padding" >
+
+<div class="w3-text-red w3-xlarge">Bank Id: <span th:text="*{id}"></span></div> <br/>
 <input type="hidden" th:field="*{id}" />
-Branch Name: <input type="text" th:field="*{name}" required />
-<span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></span>
-<br/>
 
-Branch Address: <input type="text" id="adr" th:field="*{address}" oninput=valid(this.value) required />
+<label class="w3-text-red w3-margin-top"><h4>Branch Name:</h4></label>
+<input type="text" th:field="*{name}" class="w3-input w3-black w3-text-white w3-border-white w3-border w3-round" required />
+<span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></span>
+<br/><br/>
+
+<label class="w3-text-red w3-margin-top"><h4>Branch Address:</h4></label>
+<input type="text" id="adr" th:field="*{address}" oninput=valid(this.value) class="w3-input w3-black w3-text-white w3-border-white w3-border w3-round" required />
 <span class="error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}" ></span>
 <span id="validate"></span>
-<br/>
+<br/><br/>
 
-Branch Contact: <input type="text" th:field="*{phone_no}" required />
+<label class="w3-text-red w3-margin-top"><h4>Branch Contact:</h4></label>
+<input type="text" th:field="*{phone_no}" class="w3-input w3-black w3-text-white w3-border-white w3-border w3-round" required />
 <span class="error" th:if="${#fields.hasErrors('phone_no')}" th:errors="*{phone_no}" ></span>
 <br/>
+<br/>
 
-
-<input type="submit" id="mj" value="Submit" disabled/>
-
+<div class="w3-center">
+<input type="submit" id="mj" value="Submit" class="w3-button w3-center w3-red w3-text-black w3-hover-black w3-hover-text-red w3-hover-border-red" disabled/>
+</div>
 </form>
-
+	<hr />
+	<footer class="w3-text-red w3-right-align">&copy; Copyright 2020 HJ</footer>
 </body>
 </html>
