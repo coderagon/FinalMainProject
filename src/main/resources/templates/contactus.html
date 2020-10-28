@@ -5,6 +5,57 @@
     <title>Contact Us</title>
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
+	<script>
+function sortTable1() {
+  var table, rows, switching, i, x, y, shouldSwitch;
+  table = document.getElementById("myTable");
+  switching = true;
+  while (switching) {
+    switching = false;
+    rows = table.rows;
+    for (i = 1; i < (rows.length - 1); i++) {
+      shouldSwitch = false;
+      x = rows[i].getElementsByTagName("TD")[0];
+      y = rows[i + 1].getElementsByTagName("TD")[0];
+      if (Number(x.innerHTML.toLowerCase()) > Number(y.innerHTML.toLowerCase())) {
+        shouldSwitch = true;
+        break;
+      }
+    }
+    if (shouldSwitch) {
+      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+      switching = true;
+    }
+  }
+}
+
+function sortTable2() {
+	  var table, rows, switching, i, x, y, shouldSwitch;
+	  table = document.getElementById("myTable");
+	  switching = true;
+	  while (switching) {
+	    switching = false;
+	    rows = table.rows;
+	    for (i = 1; i < (rows.length - 1); i++) {
+	      shouldSwitch = false;
+	      x = rows[i].getElementsByTagName("TD")[0];
+	      y = rows[i + 1].getElementsByTagName("TD")[0];
+	      if (Number(x.innerHTML.toLowerCase()) < Number(y.innerHTML.toLowerCase())) {
+	        shouldSwitch = true;
+	        break;
+	      }
+	    }
+	    if (shouldSwitch) {
+	      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+	      switching = true;
+	    }
+	  }
+	}
+</script>
+	
+
+	
     <script type="text/javascript">
     
     function geolocation(url)
@@ -35,14 +86,14 @@
           if (req.readyState == 4) {
             userList = JSON.parse(req.responseText);
             
-            var data="<table class=\"w3-table w3-bordered w3-border w3-margin-top w3-centered\"><thead class=\" w3-text-red\"><tr><th>Bank Id</th><th>Bank Name</th><th>Bank Address</th><th>Bank Contact</th><th>Edit Branch Details</th><th>Delete Branch</th><th>View On Map</th></tr></thead>"
+            var data="<table id=\"myTable\" class=\"w3-table w3-bordered w3-border w3-margin-top w3-centered\"><thead class=\" w3-text-red\"><tr><th>Bank Id</th><th>Bank Name</th><th>Bank Address</th><th>Bank Contact</th><th>Edit Branch Details</th><th>Delete Branch</th><th>View On Map</th></tr></thead>"
             
             if(userList.length!=0)
             	{
             userList.forEach((ele)=>{
             	
             data+="<tbody class=\"w3-text-red\"><tr><td>"+ele.id+"</td><td>"+ele.name+"</td><td>"+ele.address+
-            "</td><td>"+ele.phone_no+"</td><td><button class=\" w3-button w3-red w3-hover-black w3-hover-text-red w3-text-black w3-padding-small\" onclick=\"window.location.href=\'/contactus/edit?branch_id="+ele.id+"\';\">Edit Details</button></td><td><button class=\" w3-button w3-red w3-hover-black w3-hover-text-red w3-text-black w3-padding-small\" onclick=\"window.location.href=\'/contactus/delete/"+ele.id+"\';\">Delete</button></td><td><button type=\"button\" class=\" w3-button w3-red w3-hover-black w3-hover-text-red w3-text-black w3-padding-small\" onclick=\"geolocation(\'https://app.geocodeapi.io/api/v1/search?apikey=2c9d0760-1237-11eb-b098-d3d0a68228d6&text="+ele.address+"\')\">View On Map</button></td></tr>"
+            "</td><td>"+ele.phone_no+"</td><td><button class=\" w3-button w3-red w3-hover-black w3-round w3-hover-text-red w3-text-black w3-padding-small\" onclick=\"window.location.href=\'/contactus/edit?branch_id="+ele.id+"\';\">Edit Details</button></td><td><button class=\" w3-button w3-round w3-red w3-hover-black w3-hover-text-red w3-text-black w3-padding-small\" onclick=\"window.location.href=\'/contactus/delete/"+ele.id+"\';\">Delete</button></td><td><button type=\"button\" class=\" w3-button w3-round w3-red w3-hover-black w3-hover-text-red w3-text-black w3-padding-small\" onclick=\"geolocation(\'https://app.geocodeapi.io/api/v1/search?apikey=2c9d0760-1237-11eb-b098-d3d0a68228d6&text="+ele.address+"\')\">View On Map</button></td></tr>"
             	
             })
             	}
@@ -72,6 +123,11 @@
   <a href="/contactus/add" class="w3-bar-item w3-button w3-text-black w3-hover-black w3-hover-text-red">Add New Branch</a>
   <a href="logout" class="w3-bar-item w3-button w3-text-black w3-right-align w3-hover-black w3-hover-text-red">Logout</a>
 </div>
+	
+	<div style="float:right">
+  <button onclick="sortTable1()" class="w3-round-xxlarge  w3-button w3-red w3-text-black w3-hover-black w3-hover-text-red">sort &uarr;</button>
+   <button onclick="sortTable2()" class="w3-round-xxlarge w3-margin w3-button w3-red w3-text-black w3-hover-black w3-hover-text-red">sort &darr;</button>
+ 	</div>
  
     <button id="b1" onclick="request('/admin/branches/')" hidden>Load data</button>
     
@@ -87,6 +143,6 @@
 	</script>
 	
 	<hr />
-	<footer class="w3-text-red w3-right-align">&copy; Copyright 2020 HJ</footer>
+	<footer class="w3-text-red w3-right-align w3-padding">&copy; Copyright 2020 HJ</footer>
     </body>
     </html>

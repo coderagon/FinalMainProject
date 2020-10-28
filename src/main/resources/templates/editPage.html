@@ -77,37 +77,50 @@ window.onload = function()
     <script>
     document.getElementById('name').innerHTML= "Welcome "+localStorage.getItem("username").toUpperCase();
     </script>
+   
 
+<!-- <h2 th:text="${msg}" id="msg" class="w3-blue w3-text-black"></h2> -->
 
-<h2 th:text="${msg}" id="msg" class="w3-blue w3-text-black"></h2>
-
-<form action="#" th:action="@{/contactus/edit}" method="post" th:object="${branch}" class="w3-padding" >
+<form action="#" th:action="@{/contactus/edit}" method="post" th:object="${branch}" class="w3-padding-large" >
 
 <div class="w3-text-red w3-xlarge">Bank Id: <span th:text="*{id}"></span></div> <br/>
 <input type="hidden" th:field="*{id}" />
 
+<table class="w3-table">
+<tr>
+<td>
 <label class="w3-text-red w3-margin-top"><h4>Branch Name:</h4></label>
 <input type="text" th:field="*{name}" class="w3-input w3-black w3-text-white w3-border-white w3-border w3-round" required />
 <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></span>
-<br/><br/>
-
+<br/>
+</td>
+<td>
 <label class="w3-text-red w3-margin-top"><h4>Branch Address:</h4></label>
 <input type="text" id="adr" th:field="*{address}" oninput=valid(this.value) class="w3-input w3-black w3-text-white w3-border-white w3-border w3-round" required />
 <span class="error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}" ></span>
 <span id="validate"></span>
-<br/><br/>
-
+<br/>
+</td>
+</tr>
+<tr>
+<td>
 <label class="w3-text-red w3-margin-top"><h4>Branch Contact:</h4></label>
 <input type="text" th:field="*{phone_no}" class="w3-input w3-black w3-text-white w3-border-white w3-border w3-round" required />
 <span class="error" th:if="${#fields.hasErrors('phone_no')}" th:errors="*{phone_no}" ></span>
 <br/>
-<br/>
+</td>
+</tr>
 
+</table>
+<br/>
 <div class="w3-center">
-<input type="submit" id="mj" value="Submit" class="w3-button w3-center w3-red w3-text-black w3-hover-black w3-hover-text-red w3-hover-border-red" disabled/>
+<input type="submit" id="mj" value="Submit" class="w3-button w3-center w3-round w3-red w3-text-black w3-hover-black w3-hover-text-red w3-hover-border-red" disabled/>
+<br />
 </div>
+
 </form>
-	<hr />
-	<footer class="w3-text-red w3-right-align">&copy; Copyright 2020 HJ</footer>
+<br>
+<!-- <hr />
+	<footer class="w3-text-red w3-right-align w3-padding">&copy; Copyright 2020 HJ</footer>  -->	
 </body>
 </html>
