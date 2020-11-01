@@ -11,8 +11,13 @@ color:blue;
 </style>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 	  
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -70,12 +75,22 @@ window.onload = function()
 
 </head>
 <body class="w3-animate-top w3-black">
-<div class="w3-panel w3-red w3-mobile w3-right-align w3-text-black w3-red">
+
+<div class="w3-panel w3-red w3-mobile w3-right-align w3-text-black w3-red w3-hide-small">
     <h1 id ="name"></h1>
-    <h3 id ="name">Branch Edit Page</h3>
+    <h3>Add New Branch</h3>
     </div>
+    
+    
+    <div class="w3-container w3-red w3-mobile w3-right-align w3-text-black w3-red w3-hide-medium w3-hide-large">
+    <h4 id ="name1"></h4>
+    <h6>Add New Branch</h6>
+    </div>
+    
+    
     <script>
     document.getElementById('name').innerHTML= "Welcome "+localStorage.getItem("username").toUpperCase();
+    document.getElementById('name1').innerHTML= "Welcome "+localStorage.getItem("username").toUpperCase();
     </script>
    
 
@@ -83,38 +98,36 @@ window.onload = function()
 
 <form action="#" th:action="@{/contactus/edit}" method="post" th:object="${branch}" class="w3-padding-large" >
 
-<div class="w3-text-red w3-xlarge">Bank Id: <span th:text="*{id}"></span></div> <br/>
+<div class="w3-text-red w3-xxlarge">Bank Id: <span th:text="*{id}"></span></div> <br/>
 <input type="hidden" th:field="*{id}" />
 
-<table class="w3-table">
-<tr>
-<td>
+<div class="w3-row-padding">
+<div class="w3-half">
 <label class="w3-text-red w3-margin-top"><h4>Branch Name:</h4></label>
 <input type="text" th:field="*{name}" class="w3-input w3-black w3-text-white w3-border-white w3-border w3-round" required />
 <span class="error" th:if="${#fields.hasErrors('name')}" th:errors="*{name}" ></span>
 <br/>
-</td>
-<td>
+</div>
+<div class="w3-half">
 <label class="w3-text-red w3-margin-top"><h4>Branch Address:</h4></label>
 <input type="text" id="adr" th:field="*{address}" oninput=valid(this.value) class="w3-input w3-black w3-text-white w3-border-white w3-border w3-round" required />
 <span class="error" th:if="${#fields.hasErrors('address')}" th:errors="*{address}" ></span>
 <span id="validate"></span>
 <br/>
-</td>
-</tr>
-<tr>
-<td>
+</div>
+</div>
+<div class="w3-row-padding">
+<div class="w3-half">
 <label class="w3-text-red w3-margin-top"><h4>Branch Contact:</h4></label>
 <input type="text" th:field="*{phone_no}" class="w3-input w3-black w3-text-white w3-border-white w3-border w3-round" required />
 <span class="error" th:if="${#fields.hasErrors('phone_no')}" th:errors="*{phone_no}" ></span>
 <br/>
-</td>
-</tr>
+</div>
+</div>
 
-</table>
 <br/>
-<div class="w3-center">
-<input type="submit" id="mj" value="Submit" class="w3-button w3-center w3-round w3-red w3-text-black w3-hover-black w3-hover-text-red w3-hover-border-red" disabled/>
+<div class="w3-center w3-margin">
+<input type="submit" id="mj" value="Submit" class="w3-button w3-red w3-text-black w3-round w3-hover-black w3-hover-text-red w3-border w3-border-red w3-mobile w3-padding" disabled/>
 <br />
 </div>
 

@@ -4,9 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-   
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
     
     function setIt(frm)
@@ -22,35 +24,41 @@
         }
     </style>
 
-    <title>Please sign in</title>
+    <title>Login Page</title>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
   </head>
-  <body id="bdy" class="w3-red">
-     <div class="container">
+  <body id="bdy" class="w3-black">
+     <div class="container w3-center">
       <form class="form-signin" method="post" action="/login">
-        <h2 class="form-signin-heading w3-text-black">Admin Login</h2>
+        <h2 class="form-signin-heading w3-text-red">Admin Login</h2>
         <p>
           <label for="username" class="sr-only">Username</label>
-          <input type="text" id="username" name="username" class="form-control w3-black w3-text-red" placeholder="Username" required="" autofocus="">
+          <input type="text" id="username" name="username" class="form-control w3-border-red w3-text-red w3-black" placeholder="Username" required="" autofocus="">
         </p>
         <p>
           <label for="password" class="sr-only">Password</label>
-          <input type="password" id="password" name="password" class="form-control w3-black w3-text-red" placeholder="Password" required="">
+          <input type="password" id="password" name="password" class="form-control w3-border-red w3-text-red w3-black" placeholder="Password" required="">
         </p>
 <input name="_csrf" type="hidden" value="b8f97352-ee83-4d4e-a8a5-d7745a84e640">
-        <button class="btn btn-lg btn-primary btn-block w3-black w3-hover-blue w3-hover-text-black w3-border-black w3-text-red" type="submit" onclick="setIt(this.form)">Sign in</button>
-     	<div style="padding-left:25%;padding-top:2%">
+
+			<div style="padding-left:30%;padding-top:2%" class="w3-left-align">
      <div style="margin-top:2%;float:left;width:10%">
         <input type="checkbox" id="remember-me" name="remember-me" class="form-control" />
         </div>
         <div>
-         <span class="w3-center w3-small w3-text-black" style="font-weight:bold">Remember Me</span>
+         <span class="w3-center w3-small w3-text-red" style="font-weight:bold">Remember Me</span>
         </div>
         </div>
+
+        <button style="font-weight:bold" class="w3-button w3-margin-top w3-red w3-text-black w3-round w3-hover-black w3-hover-text-red w3-border w3-border-red w3-mobile " type="submit" onclick="setIt(this.form)">Sign in</button>
+     	
     </form>
-   
-  
+    
+    <div class="w3-center w3-margin">
+<button style="font-weight:bold" class="w3-button w3-red w3-text-black w3-round w3-hover-black w3-hover-text-red w3-border w3-border-red w3-mobile" id="btn2" onclick="window.location.href='/'">Go Back to Home</button>
+</div>
+
 </div>
 </body></html>

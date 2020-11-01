@@ -3,8 +3,14 @@
     <head>
     <meta charset="ISO-8859-1">
     <title>Contact Us</title>
-	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+	 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  	  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+ 	  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ 	  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
 	
 	<script>
 function sortTable1() {
@@ -100,7 +106,7 @@ function sortTable2() {
             data+="</tbody></table>"
             if(userList.length==0)
             	{
-            	data+="<h1>No Data Available</h1>"
+            	data+="<h1 class=\" w3-center w3-text-red\">No Data Available</h1>"
             	}
             document.getElementById('tab').innerHTML = data;
       
@@ -110,21 +116,63 @@ function sortTable2() {
       }
     
     </script>
-    </head>
-    <body class="w3-animate-top w3-black">
-    <div class="w3-panel w3-red w3-mobile w3-right-align">
-    <h1 id ="name" class="w3-text-black"></h1>
-    </div>
+    
     <script>
-    document.getElementById('name').innerHTML= "Welcome "+localStorage.getItem("username").toUpperCase();
+    
+    function w3_open() {
+    	  document.getElementById("mySidebar").style.display = "block";
+    	}
+
+    	function w3_close() {
+    	  document.getElementById("mySidebar").style.display = "none";
+    	}
+    
     </script>
     
-    <div class="w3-bar w3-red w3-right-align w3-mobile ">
+    
+    
+    </head>
+    <body class="w3-animate-top w3-black">
+    
+    <div class="w3-sidebar w3-bar-block w3-border-right w3-black w3-hide-large w3-hide-medium" style="display:none" id="mySidebar">
+  <button onclick="w3_close()" class="w3-bar-item w3-large w3-black w3-text-red">Close &times;</button>
+  <a href="/contactus/add" class="w3-bar-item w3-button w3-black w3-text-red">Add New Branch</a>
+  <a href="logout" class="w3-bar-item w3-button w3-black w3-text-red">Logout</a>
+</div>
+    
+    <div class="w3-row w3-red w3-hide-large w3-hide-medium" style="width:100%">
+    <button class="w3-button w3-text-black w3-col s2 w3-center w3-large" onclick="w3_open()" ><i class='fas fa-align-justify' style='font-size:24px'></i></button>
+    <h4 class="w3-col s10 w3-right-align w3-text-black" id="name1"></h4>
+    </div>
+    
+    
+   
+    <div class="w3-panel w3-red w3-mobile w3-right-align w3-hide-small">
+    <h1 id ="name" class="w3-text-black"></h1>
+    </div>
+
+    
+    <script>
+    document.getElementById('name').innerHTML= "Welcome "+localStorage.getItem("username").toUpperCase();
+    document.getElementById('name1').innerHTML= "Welcome "+localStorage.getItem("username").toUpperCase();
+    </script>
+    
+
+    
+
+    
+    <div class="w3-bar w3-red w3-right-align w3-mobile w3-hide-small ">
   <a href="/contactus/add" class="w3-bar-item w3-button w3-text-black w3-hover-black w3-hover-text-red">Add New Branch</a>
   <a href="logout" class="w3-bar-item w3-button w3-text-black w3-right-align w3-hover-black w3-hover-text-red">Logout</a>
 </div>
 	
-	<div style="float:right">
+	<div style="overflow:auto">
+	<div style="float:right" class="w3-hide-small">
+  <button onclick="sortTable1()" class="w3-round-xxlarge  w3-button w3-red w3-text-black w3-hover-black w3-hover-text-red">sort &uarr;</button>
+   <button onclick="sortTable2()" class="w3-round-xxlarge w3-margin w3-button w3-red w3-text-black w3-hover-black w3-hover-text-red">sort &darr;</button>
+ 	</div>
+ 	
+ 	<div style="float:left" class="w3-hide-large w3-hide-medium w3-padding">
   <button onclick="sortTable1()" class="w3-round-xxlarge  w3-button w3-red w3-text-black w3-hover-black w3-hover-text-red">sort &uarr;</button>
    <button onclick="sortTable2()" class="w3-round-xxlarge w3-margin w3-button w3-red w3-text-black w3-hover-black w3-hover-text-red">sort &darr;</button>
  	</div>
@@ -133,7 +181,7 @@ function sortTable2() {
     
 	<div id='tab'></div>
 	<a href="" id="maplink" target="_blank" hidden>View Map</a>
-	
+	</div>
 	
 	<script>
 	window.onload = function()
@@ -142,7 +190,7 @@ function sortTable2() {
 	}
 	</script>
 	
-	<hr />
+	<hr class="w3-red"/>
 	<footer class="w3-text-red w3-right-align w3-padding">&copy; Copyright 2020 HJ</footer>
     </body>
     </html>
