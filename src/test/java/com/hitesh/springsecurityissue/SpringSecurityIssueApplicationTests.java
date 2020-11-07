@@ -69,7 +69,7 @@ public class SpringSecurityIssueApplicationTests {
         BankDetails updatedEmployee = restTemplate.getForObject(getRootUrl() + "/contactus/edit/" + id, BankDetails.class);
         assertNotNull(updatedEmployee);
     }
-
+	/*If rest pass and following fails it might be due @PathVariable and @RequstParam discrepancy*/
     @Test
     public void testDeleteBranch() {
          int id = 111;
